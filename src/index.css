@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-hand: "Caveat", cursive;
+  --font-serif: "Playfair Display", serif;
+
+  --color-surface: #131313;
+  --color-surface-dim: #131313;
+  --color-surface-bright: #3a3939;
+  --color-surface-container-lowest: #0e0e0e;
+  --color-surface-container-low: #1c1b1b;
+  --color-surface-container: #201f1f;
+  --color-surface-container-high: #2a2a2a;
+  --color-surface-container-highest: #353534;
+  --color-on-surface: #e5e2e1;
+  --color-on-surface-variant: #bbc9ce;
+  --color-outline: #859398;
+  --color-surface-tint: #EE3344;
+  --color-primary-container: #EE3344;
+  --color-secondary-container: #830010;
+  --color-secondary: #fca5a5;
+}
+
+@layer base {
+  body {
+    @apply bg-[#050505] text-on-surface font-sans selection:bg-surface-tint/30;
+    cursor: crosshair;
+  }
+}
+
+@layer utilities {
+  .glass {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    pointer-events: none;
+  }
+
+  .mesh-bg {
+    background: radial-gradient(at 0% 0%, rgba(238, 51, 68, 0.08) 0%, transparent 50%), 
+                radial-gradient(at 100% 100%, rgba(0, 0, 0, 0.5) 0%, transparent 50%);
+  }
+
+  .glow-red {
+    filter: drop-shadow(0 0 15px rgba(238, 51, 68, 0.4));
+  }
+
+  /* Custom Scrollbar Styles */
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #000000;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #EE3344;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #FF4455;
+  }
+
+  /* Specific class for modern horizontal scroll */
+  .modern-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: #EE3344 #000000;
+  }
+
+  .modern-scroll::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  .modern-scroll::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+  }
+
+  .modern-scroll::-webkit-scrollbar-thumb {
+    background: #EE3344;
+    border-radius: 10px;
+  }
+
+  .modern-scroll-dark::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .modern-scroll-light::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+  }
+
+  /* Hide scrollbar utility */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
